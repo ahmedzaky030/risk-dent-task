@@ -66,6 +66,7 @@ class TransactionController {
             console.log('error in subscribe', error)
         } finally {
             session.close();
+            
         }
         
         //this.driver.close();
