@@ -1,8 +1,10 @@
 {
   "name": "heroku-typescript",
+  "main":"dist/server.js",
   "scripts": {
     "ts:watch": "tsc -w",
     "ts:build": "tsc",
+    "postinstall": "npm run build",
     "serve": "nodemon dist/server.js",
     "watch": "concurrently \"npm run ts:watch\" \"npm run serve\"",
     "build": "npm run ts:build",
