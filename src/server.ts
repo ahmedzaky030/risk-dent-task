@@ -1,12 +1,10 @@
-import * as express from "express";
-import log from "./log";
 
-const app = express();
+import App from './app';
+import TransactionController from './transactions/transactions.controller';
 
-app.get("/", (req, res) => {
-    res.json({ok: 2});
-});
+const app = new App([
+   new TransactionController()
+], 5000)
 
-app.listen(process.env.PORT || 5000, () => {
-    log.info("app running");
-});
+
+app.listen();

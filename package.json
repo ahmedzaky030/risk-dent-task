@@ -15,6 +15,7 @@
     "@types/node": "^8.0.16",
     "@types/winston": "^2.3.4",
     "express": "^4.15.3",
+    "neo4j-driver": "^4.2.1",
     "typescript": "^2.4.2",
     "winston": "^2.3.1"
   },
