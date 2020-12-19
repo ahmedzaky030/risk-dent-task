@@ -8,7 +8,7 @@ Also, this application depends on neo4j Graph database , you can work with it lo
 
 [Live Demo link](https://risk-dent.herokuapp.com/) deployed on heroku 
 
-navigate to /test  route, it must return TEST Ok 
+navigate to /test  route, it must return TEST Ok  <br/>
 navigate to /transactions?transactionId={id}&confidence={confidence}  
 
 ## Use
