@@ -34,8 +34,11 @@ class TransactionController {
             // map data as it returns from database
             let nodes = allRecords.map(value => value._fields[0].properties) as Transaction[];
             // convert data to more suitable model/interface
-            let adjustedNodes = nodes.map(value => ({ ...value, age: value.age.low, confidence: (value.confidence.low || value['confidence']), combinedConnectionInfo: { type: [], confidence: 0 } })) as ModifiedTransaction[]
-            adjustedNodes.forEach(value => {
+            let adjustedNodes = nodes.map(value => ({ ...value, age: value.age.low, confidence: (value.confidence.low || value['confidence']),  combinedConnectionInfo: { type: [], confidence: 0 } })) as ModifiedTransaction[];
+            let parentNode = adjustedNodes.slice(0,1).map(({combinedConnectionInfo, confidence, type, parentId, ...newValue}) => newValue);
+
+            let childrenNodes = adjustedNodes.slice(1);
+            childrenNodes.forEach(value => {
                 let parent = adjustedNodes.find(tr => tr.id === value.parentId);
                 if (parent) {
                     value.combinedConnectionInfo.confidence = value.confidence * parent.confidence;
@@ -44,16 +47,11 @@ class TransactionController {
                     parent.combinedConnectionInfo.type.forEach(type => distinctTypes.add(type));
                     value.combinedConnectionInfo.type = [...distinctTypes];
                     value.connectionInfo = { confidence: value.confidence, type: value.type };
-                    // remove unwanted fields
-                    let { confidence, type, parentId, ...newValue } = value;
-                    value = newValue;
-                } else {
-                    // remove unwanted fields
-                    let { combinedConnectionInfo, connectionInfo, confidence, type, parentId, ...newValue } = value;
-                    value = newValue;
                 }
-            })
-            response.json({ data: adjustedNodes })
+            });
+            let newChildrenNodes = childrenNodes.map(({ confidence, type, parentId, ...newValue }) => newValue);
+            
+            response.json({ data: [...parentNode, ...newChildrenNodes]})
         } catch (error) {
             console.log('error in subscribe', error)
         } finally {
