@@ -1,14 +1,14 @@
 export interface Transaction {
     id: string;
     name: string;
-    age: {low:number , high:number};
-    geoInfo:{ latitude: string , longitude: string},
+    age: { low: number, high: number };
+    geoInfo: { latitude: string, longitude: string },
     phone: string;
     email: string;
-    confidence:{low:number , high:number},
+    confidence: { low: number, high: number },
     parentId: string;
     type: string;
-    combinedConnectionInfo?: { type: string , confidence: number };
+    combinedConnectionInfo?: { type: string, confidence: number };
 }
 
 export interface ModifiedTransaction {
@@ -17,10 +17,9 @@ export interface ModifiedTransaction {
     age: number;
     phone: string;
     email: string;
-    confidence?:number;
+    confidence?: number;
     parentId?: string;
     type?: string;
-    connectionInfo?:{ type:string , confidence: number };
-    combinedConnectionInfo?: { type: string[] , confidence: number }
+    connectionInfo?: { type: string, confidence: number };
+    combinedConnectionInfo?: { type: string[], confidence: number }
 }
-  
