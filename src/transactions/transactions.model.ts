@@ -8,7 +8,7 @@ export interface Transaction {
     confidence:{low:number , high:number},
     parentId: string;
     type: string;
-    combinedConnectionInfo?: { type: string , confidence: number }
+    combinedConnectionInfo?: { type: string , confidence: number };
 }
 
 export interface ModifiedTransaction {
@@ -17,9 +17,10 @@ export interface ModifiedTransaction {
     age: number;
     phone: string;
     email: string;
-    confidence:number;
-    parentId: string;
-    type: string;
+    confidence?:number;
+    parentId?: string;
+    type?: string;
+    connectionInfo?:{ type:string , confidence: number };
     combinedConnectionInfo?: { type: string[] , confidence: number }
 }
   
