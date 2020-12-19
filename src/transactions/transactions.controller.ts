@@ -1,20 +1,13 @@
 import { ModifiedTransaction, Transaction } from './transactions.model';
 import * as express from 'express';
 import * as neo4j from 'neo4j-driver';
-
-
+import { DBConnection } from '../config'
 
 class TransactionController {
     public path = '/transactions';
     public router = express.Router();
     // database configuration
-    private connection = {
-        //uri:'bolt://localhost:7687',
-        uri: 'neo4j+s://6b1ba0f0.databases.neo4j.io',
-        username: 'neo4j',
-        //password:'1234',
-        password: 'IAo9sab0A7lPd8q8H8qEsoa4Ug2iMg9cJsKqXvwzgaw'
-    }
+    private connection = DBConnection;
 
     private driver;
 
