@@ -1,8 +1,33 @@
 Typescript App on Heroku
 ========================
 
-This is a simple Node.js + Express application written in Typescript
+This is a simple Node.js + Express application written in Typescript 
 that can be built and run on Heroku.
+
+Also, this application depends on neo4j Graph database , you can work with it locally(needs changes connection in config.ts file) or use it as default with cloud database Neo4j Aura (default now up to evaluation)
+
+[Live Demo link](https://risk-dent.herokuapp.com/) deployed on heroku 
+
+navigate to /test  route, it must return TEST Ok 
+navigate to /transactions?transactionId={id}&confidence={confidence}  
+
+## Use
+To use this application 
+
+1. clone the repository
+```
+git clone <the repository link>
+```
+2. Install the dependencies
+```
+cd risk-dent-task
+npm install
+```
+3. Run the application
+```
+npm run start
+```
+
 
 ## Deploy
 To deploy this application simply create a new Heroku app
