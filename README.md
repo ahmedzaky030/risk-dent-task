@@ -1,4 +1,4 @@
-Typescript App on Heroku
+Risk Dent Task
 ========================
 
 This is a simple Node.js + Express application written in Typescript 
